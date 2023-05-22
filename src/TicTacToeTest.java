@@ -29,6 +29,22 @@ public class TicTacToeTest {
     }
 
     @Test
+    @DisplayName("Correct placement test")
+    void someGame() {
+        game.place(1, 1);
+        game.place(3, 2);
+        game.place(2, 3);
+        assertEquals(game.getStatus(), """
+                Status: playing
+                 ---
+                |x..|
+                |..x|
+                |.o.|
+                 ---
+                Current player: 1""");
+    }
+
+    @Test
     @DisplayName("Wrong placement throw")
     void wrongPlace() {
         assertThrows(IllegalArgumentException.class, () -> game.place(1, 4));
